@@ -49,6 +49,7 @@ backend/dist/
 backend/*.egg-info/
 
 # local DBs / state
+local.db
 backend/local.db
 backend/*.sqlite3
 backend/*.db
