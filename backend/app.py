@@ -28,12 +28,6 @@ app.add_middleware(
 )
 
 
-# # Serve built frontend if present
-# static_dir = os.path.join(os.path.dirname(__file__), "static")
-# if os.path.isdir(static_dir):
-#     app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
-
-
 @app.get("/api/models", response_model=list[SupportedModelOut])
 def list_models(db: Session = Depends(get_db)):
     repo = SupportedModelsRepository(db)
@@ -68,6 +62,7 @@ def chat(body: ChatRequest, db: Session = Depends(get_db)):
     cost=float(round(cost, 8)),
     )
 
+# Mounting static site at "/" AFTER API routes
 static_dir = os.path.join(os.path.dirname(__file__), "static")
 if os.path.isdir(static_dir):
     app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
