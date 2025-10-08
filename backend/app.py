@@ -28,10 +28,10 @@ app.add_middleware(
 )
 
 
-# Serve built frontend if present
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-if os.path.isdir(static_dir):
-    app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
+# # Serve built frontend if present
+# static_dir = os.path.join(os.path.dirname(__file__), "static")
+# if os.path.isdir(static_dir):
+#     app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
 
 
 @app.get("/api/models", response_model=list[SupportedModelOut])
