@@ -2,6 +2,6 @@
   "name": "plumloom-heroku-build",
   "private": true,
   "scripts": {
-    "heroku-postbuild": "npm --prefix frontend ci || npm --prefix frontend install --no-audit --no-fund && npm --prefix frontend run build && rm -rf backend/static && mkdir -p backend/static && cp -r frontend/dist/* backend/static/"
+    "heroku-postbuild": "npm --prefix frontend ci --include=dev || npm --prefix frontend install --no-audit --no-fund --production=false && npm --prefix frontend run build && rm -rf backend/static && mkdir -p backend/static && cp -r frontend/dist/* backend/static/"
   }
 }
